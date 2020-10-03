@@ -25,17 +25,26 @@ $app->get(
     }
 );
 
+$app->redirect('/2021/jan[/]', '/assets/img/jan.jpg');
+$app->redirect('/2021/fev[/]', 'https://www.youtube.com/watch?v=epkRpbTv44Y');
+$app->redirect('/2021/out[/]', '/assets/audio/set.mp3');
+
 $app->get(
     '/2021/{month}[/]',
-    function (Request $request, Response $response, $args) use ($twig) {
+    function (Request $request, Response $response, $args) use ($app, $twig) {
         $month = $args['month'];
 
-        if (!in_array($month, ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'])) {
+        if (!in_array($month, ['mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'nov', 'dez'])) {
             $body = $twig->render('2021.twig', ['message' => 'Nada aqui ...']);
             $response->getBody()->write($body);
             return $response;
         } else {
-            $body = $twig->render('2021.twig', ['message' => $month]);
+            if($month === 'set') {
+                $body = $twig->render('2021-set.twig');
+            } else {
+                $body = $twig->render('2021.twig', ['message' => $month]);
+            }
+
             $response->getBody()->write($body);
         }
 
