@@ -34,7 +34,7 @@ $app->get(
     function (Request $request, Response $response, $args) use ($app, $twig) {
         $month = $args['month'];
 
-        if (!in_array($month, ['mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'nov', 'dez'])) {
+        if (!in_array($month, ['intro', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'nov', 'dez'])) {
             $body = $twig->render('2021.twig', ['message' => 'Nada aqui ...']);
             $response->getBody()->write($body);
             return $response;

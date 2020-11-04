@@ -22,6 +22,7 @@ qrencode -o 9-set.png -s 40 -m 2 -l M -v 2 "https://calendarioanaba.com.br/2021/
 qrencode -o 10-out.png -s 40 -m 2 -l M -v 2 "https://calendarioanaba.com.br/2021/out"
 qrencode -o 11-nov.png -s 40 -m 2 -l M -v 2 "https://calendarioanaba.com.br/2021/nov"
 qrencode -o 12-dez.png -s 40 -m 2 -l M -v 2 "https://calendarioanaba.com.br/2021/dez"
+qrencode -o intro.png -s 40 -m 2 -l M -v 2 "https://calendarioanaba.com.br/2021/intro"
 ```
 
  
