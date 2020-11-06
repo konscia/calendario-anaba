@@ -25,9 +25,19 @@ $app->get(
     }
 );
 
-$app->redirect('/2021/jan[/]', '/assets/img/jan.jpg');
-$app->redirect('/2021/fev[/]', 'https://www.youtube.com/watch?v=epkRpbTv44Y');
-$app->redirect('/2021/out[/]', '/assets/audio/set.mp3');
+$app->redirect('/2021/intro[/]', '/audios/intro.mp3');
+$app->redirect('/2021/jan[/]', '/audios/1-jan.mp3');
+$app->redirect('/2021/fev[/]', '/audios/2-fev.mp3');
+$app->redirect('/2021/mar[/]', '/audios/3-mar.mp3');
+$app->redirect('/2021/abr[/]', '/audios/4-abr.mp3');
+$app->redirect('/2021/mai[/]', '/audios/5-mai.mp3');
+$app->redirect('/2021/jun[/]', '/audios/6-jun.mp3');
+$app->redirect('/2021/jul[/]', '/audios/7-jul.mp3');
+$app->redirect('/2021/ago[/]', '/audios/8-ago.mp3');
+$app->redirect('/2021/set[/]', '/audios/9-set.mp3');
+$app->redirect('/2021/out[/]', '/audios/10-out.mp3');
+$app->redirect('/2021/nov[/]', '/audios/11-nov.mp3');
+$app->redirect('/2021/dez[/]', '/audios/12-dez.mp3');
 
 $app->get(
     '/2021/{month}[/]',
