@@ -3,8 +3,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -16,51 +14,20 @@ $app = AppFactory::create();
 $loader = new FilesystemLoader('../templates/', __DIR__);
 $twig = new Environment($loader);
 
-$app->get(
-    '/',
-    function (Request $request, Response $response, $args) use ($twig) {
-        $body = $twig->render('2021.twig', ['message' => 'Anabá 2021 💚']);
-        $response->getBody()->write($body);
-        return $response;
-    }
-);
-
-$app->redirect('/2021/intro[/]', '/audios/intro.mp3');
-$app->redirect('/2021/jan[/]', '/audios/1-jan.mp3');
-$app->redirect('/2021/fev[/]', '/audios/2-fev.mp3');
-$app->redirect('/2021/mar[/]', '/audios/3-mar.mp3');
-$app->redirect('/2021/abr[/]', '/audios/4-abr.mp3');
-$app->redirect('/2021/mai[/]', '/audios/5-mai.mp3');
-$app->redirect('/2021/jun[/]', '/audios/6-jun.mp3');
-$app->redirect('/2021/jul[/]', '/audios/7-jul.mp3');
-$app->redirect('/2021/ago[/]', '/audios/8-ago.mp3');
-$app->redirect('/2021/set[/]', '/audios/9-set.mp3');
-$app->redirect('/2021/out[/]', '/audios/10-out.mp3');
-$app->redirect('/2021/nov[/]', '/audios/11-nov.mp3');
-$app->redirect('/2021/dez[/]', '/audios/12-dez.mp3');
-
-$app->get(
-    '/2021/{month}[/]',
-    function (Request $request, Response $response, $args) use ($app, $twig) {
-        $month = $args['month'];
-
-        if (!in_array($month, ['intro', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'nov', 'dez'])) {
-            $body = $twig->render('2021.twig', ['message' => 'Nada aqui ...']);
-            $response->getBody()->write($body);
-            return $response;
-        } else {
-            if($month === 'set') {
-                $body = $twig->render('2021-set.twig');
-            } else {
-                $body = $twig->render('2021.twig', ['message' => $month]);
-            }
-
-            $response->getBody()->write($body);
-        }
-
-        return $response;
-    }
-);
+$app->redirect('/', 'https://www.youtube.com/channel/UCNi0W4h3iG0dRfczka8_v1A');
+$app->redirect('/2021/intro[/]', 'https://www.youtube.com/watch?v=IKA-irhSXEY');
+$app->redirect('/2021/jan[/]',   'https://www.youtube.com/watch?v=lRAhTRZdx9o');
+$app->redirect('/2021/fev[/]',   'https://www.youtube.com/watch?v=f9Y-HzkRoGg');
+$app->redirect('/2021/mar[/]',   'https://www.youtube.com/watch?v=1HG9W6iyiO0');
+$app->redirect('/2021/abr[/]',   'https://www.youtube.com/watch?v=XIhrdpAtxDQ');
+$app->redirect('/2021/mai[/]',   'https://www.youtube.com/watch?v=BF_O40b3I3w');
+$app->redirect('/2021/jun[/]',   'https://www.youtube.com/watch?v=Lsh1wm4YprM');
+$app->redirect('/2021/jul[/]',   'https://www.youtube.com/watch?v=LAa7Oweg2sk');
+$app->redirect('/2021/ago[/]',   'https://www.youtube.com/watch?v=dyLtwi39cHU');
+$app->redirect('/2021/set[/]',   'https://www.youtube.com/watch?v=QaVaUcAbrw4');
+$app->redirect('/2021/out[/]',   'https://www.youtube.com/watch?v=CuTGKHStLO0');
+$app->redirect('/2021/nov[/]',   'https://www.youtube.com/watch?v=RcHqGmTohPA');
+$app->redirect('/2021/dez[/]',   'https://www.youtube.com/watch?v=lW-sDasKa-A');
 
 $errorMid = $app->addErrorMiddleware(true, true, true);
 $errorMid->setDefaultErrorHandler(function () use ($app, $twig) {
